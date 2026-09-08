@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    width: 300px;
+    height: 650px;
+    background-color: rgb(41, 88, 88);
+    border-radius: 15px;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+.circle-1{
+    width: 200px;
+    height: 200px;
+    background-color: lemonchiffon;
+    border: 5px solid #070303;
+    border-radius: 50%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto;    
+    margin-bottom: 3px;
+}
+
+.circle-2{
+    width: 150px;
+    height: 150px;
+    background-color: lemonchiffon;
+    border: 1px solid #070303;
+    border-radius: 50%;
+    position: relative;
+    justify-content: center;
+    top: 20px;
+    left: 20px;
+}
+
+.neck-pole{
+    width: 20px;
+    height: 150px;
+    background-color: #1d1c1c;
+    justify-content: center;
+    margin: auto auto;
+    margin-bottom: 3px;
+}
+
+.base-pole{
+    width: 40px;
+    height: 100px;
+    background-color: #2436df;
+    border-radius: 3px;
+    justify-content: center;
+    margin: auto auto;   
+    margin-bottom: 3px;
+}
+
+.control{
+    width: 150px;
+    height: 100px;
+    background-color: #0f0e0e;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto;
+    padding: auto auto;
+    position: relative;
+}
+
+.control-button{
+    background-color: #2436df;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    position: absolute;
+    top: 28px;
+    left: 53px;
+}
+
+.control-button:hover{
+    cursor: pointer;
+}
+
+.blade{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: rollingfan 0.5s linear infinite;
+}
+
+.blade #one{
+    width: 85px;
+    height: 10px;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    background-color: #000;
+    border-radius: 6px;
+    top: 50%;
+    left: 50%;
+}
+
+.blade #two{
+    width: 85px;
+    height: 10px;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    background-color: #000;
+    border-radius: 6px;
+    top: 50%;
+    right: 50%;
+}
+
+@keyframes rollingfan {
+    from{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
