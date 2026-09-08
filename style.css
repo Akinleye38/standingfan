@@ -45,6 +45,15 @@ main{
     left: 20px;
 }
 
+.circle-2 p{
+    display: flex;
+    font-size: 32px;
+    color:#a3a2a2;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
 .neck-pole{
     width: 20px;
     height: 150px;
