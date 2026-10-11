@@ -296,8 +296,6 @@ main {
     top: 50%;
     right: 50%;
 
-    box-shadow: 40px 40px 40px grey;
-
     transform: translate(50%, -50%) rotate(110deg);
 }
 
