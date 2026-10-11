@@ -1,16 +1,16 @@
-*{
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
+body {
     justify-content: center;
     align-items: center;
 }
 
-main{
+main {
     width: 300px;
     height: 650px;
     background-color: rgb(41, 88, 88);
@@ -20,7 +20,7 @@ main{
     padding: 20px;
 }
 
-.circle-1{
+.circle-1 {
     width: 200px;
     height: 200px;
     background-color: lemonchiffon;
@@ -29,11 +29,11 @@ main{
     position: relative;
     justify-content: center;
     align-items: center;
-    margin: auto auto;    
+    margin: auto auto;
     margin-bottom: 3px;
 }
 
-.circle-2{
+.circle-2 {
     width: 150px;
     height: 150px;
     background-color: lemonchiffon;
@@ -45,16 +45,16 @@ main{
     left: 20px;
 }
 
-.circle-2 p{
+.circle-2 p {
     display: flex;
     font-size: 32px;
-    color:#a3a2a2;
+    color: #a3a2a2;
     justify-content: center;
     text-align: center;
     margin-top: 50px;
 }
 
-.neck-pole{
+.neck-pole {
     width: 20px;
     height: 150px;
     background-color: #1d1c1c;
@@ -63,17 +63,17 @@ main{
     margin-bottom: 3px;
 }
 
-.base-pole{
+.base-pole {
     width: 40px;
     height: 100px;
     background-color: #2436df;
     border-radius: 3px;
     justify-content: center;
-    margin: auto auto;   
+    margin: auto auto;
     margin-bottom: 3px;
 }
 
-.control{
+.control {
     width: 150px;
     height: 100px;
     background-color: #0f0e0e;
@@ -85,7 +85,7 @@ main{
     position: relative;
 }
 
-.control-button{
+.control-button {
     background-color: #2436df;
     border: 1px solid #fff;
     border-radius: 3px;
@@ -98,18 +98,18 @@ main{
     left: 53px;
 }
 
-.control-button:hover{
+.control-button:hover {
     cursor: pointer;
 }
 
-.blade{
+.blade {
     position: absolute;
     top: 50%;
     left: 50%;
     animation: rollingfan 0.2s linear infinite;
 }
 
-.blade #one{
+.blade #one {
     width: 85px;
     height: 10px;
     display: flex;
@@ -122,7 +122,8 @@ main{
     box-shadow: 0px 0px 40px 0px grey;
 }
 
-.blade #two{
+
+.blade #two {
     width: 85px;
     height: 10px;
     display: flex;
@@ -135,21 +136,279 @@ main{
     box-shadow: 40px 40px 40px 0px grey;
 }
 
-#one {
-    transform: translateY(-50%) rotate(30deg);
-}
 
-#two {
-    transform: translateY(-50%) rotate(210deg);
+.blade.rotating {
+    animation: rollingfan 0.2s linear infinite;
 }
 
 @keyframes rollingfan {
-    from{
+    from {
         transform: translate(-50%, -50%) rotate(0deg);
     }
 
-    to{
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+} */
+
+
+
+/* =========================
+   GENERAL RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+
+/* =========================
+   MAIN FAN CONTAINER
+========================= */
+
+main {
+    width: 300px;
+    height: 650px;
+    background-color: rgb(41, 88, 88);
+    border-radius: 15px;
+    margin: 10px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================
+   FAN OUTER CIRCLE
+========================= */
+
+.circle-1 {
+    width: 200px;
+    height: 200px;
+    background-color: lemonchiffon;
+    border: 5px solid #070303;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+
+/* =========================
+   FAN INNER CIRCLE
+========================= */
+
+.circle-2 {
+    width: 150px;
+    height: 150px;
+    background-color: lemonchiffon;
+    border: 1px solid #070303;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================
+   FAN BRAND NAME
+========================= */
+
+.circle-2 p {
+    display: flex;
+    font-size: 20px;
+    color: #fdfcfc;
+    justify-content: center;
+    text-align: center;
+    /* margin-top: 2px; */
+    position: relative;
+    z-index: 3;
+}
+
+
+/* =========================
+   FAN BLADES CONTAINER
+========================= */
+
+.blade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+
+/* =========================
+   FIRST FAN BLADE
+========================= */
+
+.blade #one {
+    width: 180px;
+    height: 10px;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    background-color: #000;
+    border-radius: 6px;
+
+    top: 50%;
+    left: 50%;
+
+    box-shadow: 0 0 40px grey;
+
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+
+/* =========================
+   SECOND FAN BLADE
+========================= */
+
+.blade #two {
+    width: 180px;
+    height: 10px;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    background-color: #000;
+    border-radius: 6px;
+
+    top: 50%;
+    right: 50%;
+
+    box-shadow: 40px 40px 40px grey;
+
+    transform: translate(50%, -50%) rotate(90deg);
+}
+
+
+/* =========================
+   FAN ROTATION
+========================= */
+
+.blade.rotating {
+    animation: rollingfan 0.2s linear infinite;
+}
+
+@keyframes rollingfan {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
+
+/* =========================
+   FAN NECK POLE
+========================= */
+
+.neck-pole {
+    width: 20px;
+    height: 150px;
+    background-color: #1d1c1c;
+    margin-bottom: 3px;
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   FAN BASE
+========================= */
+
+.base-pole {
+    width: 40px;
+    height: 100px;
+    background-color: #2436df;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   CONTROL PANEL
+========================= */
+
+.control {
+    width: 150px;
+    height: 100px;
+    background-color: #0f0e0e;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================
+   ON/OFF BUTTON
+========================= */
+
+.control-button {
+    background-color: #2436df;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+
+/* =========================
+   BUTTON HOVER
+========================= */
+
+.control-button:hover {
+    background-color: #1725a8;
+}
+
+
+/* =========================
+   BUTTON FOCUS
+========================= */
+
+.control-button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 350px) {
+    main {
+        width: 280px;
+        padding: 15px;
+    }
+}

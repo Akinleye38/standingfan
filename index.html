@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>OX Fan</title>
 </head>
+
 <body>
     <main>
         <div class="circle-1">
             <div class="circle-2">
                 <p>OX FAN</p>
-                <div class="blade">
-                    <span id="one"></span><span id="two"></span>
+                <div class="blade" id="fan-blades">
+                    <span id="one"></span id=>
+                    <span id="two"></span>
                 </div>
             </div>
         </div>
@@ -20,8 +23,25 @@
         <div class="neck-pole"></div>
         <div class="base-pole"></div>
         <div class="control">
-            <button class="control-button">ON</button>
+            <button type="button" class="control-button" id="fan-button">ON</button>
         </div>
     </main>
+
+    <script>
+        const fanButton = document.getElementById("fan-button");
+        const fanBlades = document.getElementById("fan-blades");
+
+        fanButton.addEventListener("click", function () {
+            if (fanBlades.classList.contains("rotating")) {
+                fanBlades.classList.remove("rotating");
+                fanButton.textContent = "ON";
+            } else {
+                fanBlades.classList.add("rotating");
+                fanButton.textContent = "OFF";
+            }
+        });
+    </script>
+
 </body>
+
 </html>
