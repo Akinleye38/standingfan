@@ -14,7 +14,7 @@
             <div class="circle-2">
                 <p>OX FAN</p>
                 <div class="blade" id="fan-blades">
-                    <span id="one"></span id=>
+                    <span id="one"></span>
                     <span id="two"></span>
                 </div>
             </div>
@@ -31,15 +31,71 @@
         const fanButton = document.getElementById("fan-button");
         const fanBlades = document.getElementById("fan-blades");
 
-        fanButton.addEventListener("click", function () {
-            if (fanBlades.classList.contains("rotating")) {
-                fanBlades.classList.remove("rotating");
-                fanButton.textContent = "ON";
+        let fanOn = false;
+        let currentSpeed = 0;
+        let rotation = 0;
+        let animationFrame = null;
+        let previousTime = null;
+
+        const MAX_SPEED = 1440; // Maximum speed in degrees per second
+        const ACCELERATION = 360; // Speed increase per second
+        const DECELERATION = 180; // Speed decrease per second
+
+        function animateFan(timestamp) {
+            if (previousTime === null) {
+                previousTime = timestamp;
+            }
+
+            const deltaTime = Math.min((timestamp - previousTime) / 1000, 0.05);
+            previousTime = timestamp;
+
+            if (fanOn) {
+                // Gradually increase the speed
+                currentSpeed = Math.min(
+                    currentSpeed + ACCELERATION * deltaTime,
+                    MAX_SPEED
+                );
             } else {
-                fanBlades.classList.add("rotating");
+                // Gradually decrease the speed
+                currentSpeed = Math.max(
+                    currentSpeed - DECELERATION * deltaTime,
+                    0
+                );
+            }
+
+            // Rotate the fan according to its current speed
+            rotation += currentSpeed * deltaTime;
+
+            fanBlades.style.transform =
+                `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+            // Stop the animation loop once the fan has completely stopped
+            if (!fanOn && currentSpeed === 0) {
+                animationFrame = null;
+                previousTime = null;
+                fanBlades.style.transform =
+                    `translate(-50%, -50%) rotate(${rotation}deg)`;
+                return;
+            }
+
+            animationFrame = requestAnimationFrame(animateFan);
+        }
+
+        fanButton.addEventListener("click", function () {
+            fanOn = !fanOn;
+
+            if (fanOn) {
                 fanButton.textContent = "OFF";
+
+                if (animationFrame === null) {
+                    previousTime = null;
+                    animationFrame = requestAnimationFrame(animateFan);
+                }
+            } else {
+                fanButton.textContent = "ON";
             }
         });
+
     </script>
 
 </body>
